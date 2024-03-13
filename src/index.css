@@ -1,0 +1,322 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    color: black;
+    background-color:cadetblue;
+  }
+  .app__container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .signin-button {
+    display: inline-block;
+   padding: 0.9rem 1.8rem;
+   font-size: 16px;
+   font-weight: 700;
+   color: white;
+   border: 3px solid rgb(252, 70, 100);
+   cursor: pointer;
+   position: relative;
+   background-color: transparent;
+   text-decoration: none;
+   overflow: hidden;
+   z-index: 1;
+   font-family: inherit
+  }
+  .signin-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(252, 70, 100);
+    transform: translateX(-100%);
+    transition: all .3s;
+    z-index: -1;
+   }
+   
+   .signin-button:hover::before {
+    transform: translateX(0);
+   }
+   .input_loguin {
+    --input-focus: rgb(252, 70, 100);
+    --font-color: #fefefe;
+    --font-color-sub: ;
+    --bg-color: #066fa2;
+    --main-color: #fefefe;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+  }
+  
+  .input_loguin::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
+  
+  .input_loguin:focus {
+    border: 2px solid var(--input-focus);
+  }
+  
+  .loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 10px;
+    color:coral;
+  }
+  
+  .loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  .loading:not(:required) {
+   
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+  }
+  
+  .loading:not(:required):after {
+    content: '';
+    display: block;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.5em;
+    -webkit-animation: spinner 1500ms infinite linear;
+    -moz-animation: spinner 1500ms infinite linear;
+    -ms-animation: spinner 1500ms infinite linear;
+    -o-animation: spinner 1500ms infinite linear;
+    animation: spinner 1500ms infinite linear;
+    border-radius: 0.5em;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
+      rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+      rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0,
+      rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+      rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
+      rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+      rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0,
+      rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+      rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  }
+  
+  /* Animation */
+  
+  @-webkit-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @-moz-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @-o-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  .todolist-container {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    width: 700px;
+    margin-top: 5px;
+    box-shadow: 0px 3px 7px 13px rgba(24, 37, 110, 0.22);
+    -webkit-box-shadow: 0px 3px 7px 13px rgba(24, 37, 110, 0.22);
+    -moz-box-shadow: 0px 3px 7px 13px rgba(24, 37, 110, 0.22);
+  }
+  
+  h1 {
+    font-size: 70px;
+    color: #ebd8d9;
+    font-style: oblique;
+    text-align: center;
+    margin-bottom: none;
+  }
+  ul {
+    list-style: none;
+    width: 600px;
+    margin-left: 3rem;
+    padding-left: unset;
+    background-color: whitesmoke;
+    box-shadow: 0px 3px 7px 3px rgba(12, 13, 15, 0.47);
+    -webkit-box-shadow: 0px 3px 7px 3px rgba(12, 13, 15, 0.47);
+    -moz-box-shadow: 0px 3px 7px 3px rgba(12, 13, 15, 0.47);
+  }
+  ul li {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid;
+    padding: 5px;
+    font-size: 18px;
+  }
+  .input_todo {
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-family: inherit;
+    box-shadow: 0 0 0 1px #f8bfbf;
+    border: none;
+    
+    background-color:whitesmoke;
+    transition: all .3s;
+  }
+  .input_todo::placeholder {
+    color:#ebd8d9;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .input_todo:focus {
+    outline: none;
+    box-shadow: 0 0 10px 1px #ee8c8c;
+    border: none;
+    transition: all .3s;
+   }
+  .button_todo {
+    border: none;
+    background-color: whitesmoke;
+    align-items: flex-end;
+    color: #ebd8d9;
+    font-size: 20px;
+    
+  }
+  .button_todo:hover {
+    background: rgba(170, 170, 170, 0.62);
+    transition: 0.5s;
+  }
+  
+  .button_todo svg {
+    color: #ebd8d9;
+  }
+  .logout-button{
+    display: flex;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+   height: 3em;
+   width: 100px;
+   align-items: center;
+   justify-content: center;
+   background-color: #eeeeee4b;
+   border-radius: 3px;
+   letter-spacing: 1px;
+   transition: all 0.2s linear;
+   cursor: pointer;
+   border: none;
+   background: #fff;
+  }
+  .logout-button > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+   }
+   
+   .logout-button:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+   }
+   
+   .logout-button:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+   }
+  
